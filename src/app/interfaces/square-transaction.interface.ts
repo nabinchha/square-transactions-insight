@@ -1,0 +1,42 @@
+export interface SquareTransactionInterface {
+    date: Date;
+    time: string;
+    timeZone: string;
+    grossSales: number;
+    discounts: number;
+    netSales: number;
+    giftCardSales: number;
+    tax: number;
+    tip: number;
+    partialRefunds: number;
+    totalCollected: number;
+    source: string;
+    card: number;
+    cardEntryMethods: string;
+    cash: number;
+    squareGiftCard: number;
+    otherTender: number;
+    otherTenderType: string;
+    otherTenderNote: string;
+    fees: number;
+    netTotal: number;
+    transactionId: string;
+    paymentId: string;
+    cardBrand: string;
+    panSuffix: string;
+    deviceName: string;
+    staffName: string;
+    staffId: string;
+    details: string;
+    description: string;
+    eventType: string;
+    location: string;
+    diningOption: string;
+    customerId: string;
+    customerName: string;
+    customerReferenceId: string;
+    deviceNickname: string;
+    currencySymbol: string;
+
+    loadFromColumns(columns: any[]): void;
+}

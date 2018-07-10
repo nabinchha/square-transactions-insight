@@ -1,0 +1,13 @@
+<div *ngIf="analysisService.initialized" class="card">
+  <div class="card-header">
+    <span><strong>Revenue over {{lineChartLabels.length}} months in {{currencySymbol}}.</strong></span>
+  </div>
+  <div class="card-body">
+    <canvas baseChart width="400" height="200"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [legend]="true"
+            chartType="line"></canvas>
+  </div>
+</div>

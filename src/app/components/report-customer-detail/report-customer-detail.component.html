@@ -1,0 +1,81 @@
+<div *ngIf="analysisService.initialized && !hasError">
+    <div class="container-fluid d-flex justify-content-between border-bottom">
+        <h1>{{customer?.name}}</h1>
+        <div><button type="button" class="btn btn-outline-secondary btn-sm" routerLink="/">Back to dashboard</button></div>
+    </div>
+    <div class="container-fluid d-flex justify-content-between stats-container">
+        <div class="card border-secondary mb-3 text-center" style="max-width: 18rem;">
+            <div class="card-body text-secondary">
+                <h6>Total revenue</h6>
+                <h2>{{customer?.currency}}{{customer?.totalRevenue | number:'1.2-2'}}</h2>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3 text-center" style="max-width: 18rem;">
+            <div class="card-body text-secondary">
+                <h6>Total visits</h6>
+                <h1>{{customer?.totalTransactions}}</h1>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3 text-center" style="max-width: 18rem;">
+            <div class="card-body text-secondary">
+                <h6>Total tips</h6>
+                <h2>{{customer?.currency}}{{customer?.totalTips | number:'1.2-2'}}</h2>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3 text-center" style="max-width: 18rem;">
+            <div class="card-body text-secondary">
+                <h6>Avg. visits/month</h6>
+                <h2>{{customer?.averageTransactionsPerMonth}}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid d-flex justify-content-between stats-container">
+        <div class="card border-secondary mb-3 text-center" style="max-width: 18rem;">
+            <div class="card-body text-secondary">
+                <h6>Avg. revenue/visit</h6>
+                <h2>{{customer?.currency}}{{customer?.averageRevenuePerVisit | number:'1.2-2'}}</h2>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3 text-center" style="max-width: 18rem;">
+            <div class="card-body text-secondary">
+                <h6>Avg. revenue/month</h6>
+                <h2>{{customer?.currency}}{{customer?.averageRevenuePerMonth | number:'1.2-2'}}</h2>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3 text-center" style="max-width: 18rem;">
+            <div class="card-body text-secondary">
+                <h6>Avg. tips/visit</h6>
+                <h2>{{customer?.currency}}{{customer?.averageTipPerVisit | number:'1.2-2'}}</h2>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3 text-center" style="max-width: 18rem;">
+            <div class="card-body text-secondary">
+                <h6>Avg. tips/month</h6>
+                <h2>{{customer?.currency}}{{customer?.averageTipPerMonth | number:'1.2-2'}}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="pie-chart-container">
+        <div class="container-fluid d-flex justify-content-between border-bottom">
+            <h3>Favorite items</h3>
+        </div>
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                chartType="pie">
+        </canvas>
+    </div>
+</div>
+
+<div *ngIf="analysisService.initialized && hasError">
+    <div class="alert alert-danger text-center" role="alert">
+        Invalid customer id.
+    </div>
+</div>
+
+<div *ngIf="!analysisService.initialized">
+    <div class="alert alert-warning text-center" role="alert">
+        You need to upload the transaction csv in the <a routerLink="/" class="alert-link">dashboard</a> first.
+    </div>
+</div>

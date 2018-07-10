@@ -1,0 +1,70 @@
+<div *ngIf="analysisService.initialized" class="card">
+    <div class="card-header d-flex justify-content-between align-items-baseline">
+        <div>
+            <strong>
+                <span>Top</span>
+                <div ngbDropdown class="d-inline-block">
+                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{poolSize}}</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button class="dropdown-item" (click)="setPoolSize(10)">10</button>
+                        <button class="dropdown-item" (click)="setPoolSize(25)">25</button>
+                        <button class="dropdown-item" (click)="setPoolSize(50)">50</button>
+                        <button class="dropdown-item" (click)="setPoolSize(100)">100</button>
+                        <button class="dropdown-item" (click)="setPoolSize(200)">200</button>
+                        <button class="dropdown-item" (click)="setPoolSize(500)">500</button>
+                        <button class="dropdown-item" (click)="setPoolSize(1000)">1000</button>
+                    </div>
+                </div>
+                <span> customers by </span>
+                <div ngbDropdown class="d-inline-block">
+                    <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>{{reportType}}</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                        <button class="dropdown-item" (click)="setReportType(reportTypes.visitsPerMonth)">{{reportTypes.visitsPerMonth}}</button>
+                        <button class="dropdown-item" (click)="setReportType(reportTypes.totalVisits)">{{reportTypes.totalVisits}}</button>
+                        <button class="dropdown-item" (click)="setReportType(reportTypes.revenuePerVisit)">{{reportTypes.revenuePerVisit}}</button>
+                        <button class="dropdown-item" (click)="setReportType(reportTypes.revenuePerMonth)">{{reportTypes.revenuePerMonth}}</button>
+                        <button class="dropdown-item" (click)="setReportType(reportTypes.totalRevenue)">{{reportTypes.totalRevenue}}</button>
+                        <button class="dropdown-item" (click)="setReportType(reportTypes.tipsPerVisit)">{{reportTypes.tipsPerVisit}}</button>
+                        <button class="dropdown-item" (click)="setReportType(reportTypes.tipsPerMonth)">{{reportTypes.tipsPerMonth}}</button>
+                        <button class="dropdown-item" (click)="setReportType(reportTypes.totalTips)">{{reportTypes.totalTips}}</button>
+                    </div>
+                </div>
+            </strong>
+        </div>
+        <div class="drill-down-info">Click to drill down.</div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Visits / month</th>
+                <th scope="col">Total visits</th>
+
+                <th scope="col">Revenue / visit</th>
+                <th scope="col">Revenue / month</th>
+                <th scope="col">Total revenue</th>
+
+                <th scope="col">Tips / visit</th>
+                <th scope="col">Tips / month</th>
+                <th scope="col">Total tips</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let customer of topCustomers" class="clickable">
+                <td (click)="navigateToCustomer(customer)">{{customer.name}}</td>
+                <td (click)="navigateToCustomer(customer)">{{customer.averageTransactionsPerMonth}}</td>
+                <td (click)="navigateToCustomer(customer)">{{customer.totalTransactions}}</td>
+
+                <td (click)="navigateToCustomer(customer)">{{customer.currency}}{{customer.averageRevenuePerVisit | number:'1.2-2'}}</td>
+                <td (click)="navigateToCustomer(customer)">{{customer.currency}}{{customer.averageRevenuePerMonth | number:'1.2-2'}}</td>
+                <td (click)="navigateToCustomer(customer)">{{customer.currency}}{{customer.totalRevenue | number:'1.2-2'}}</td>
+
+                <td (click)="navigateToCustomer(customer)">{{customer.currency}}{{customer.averageTipPerVisit | number:'1.2-2'}}</td>
+                <td (click)="navigateToCustomer(customer)">{{customer.currency}}{{customer.averageTipPerMonth | number:'1.2-2'}}</td>
+                <td (click)="navigateToCustomer(customer)">{{customer.currency}}{{customer.totalTips | number:'1.2-2'}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

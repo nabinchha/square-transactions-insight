@@ -1,0 +1,12 @@
+<div class="drop-zone-wrapper">
+    <div *ngIf="hasError" class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    <div class="drop-zone d-flex flex-column align-items-center justify-content-center"
+         appDropzone
+         (fileDropped)="handleFileDropped($event)">
+        <span>Drop square's transactions csv file in here.</span>
+        <p *ngIf="fileName">File dropped: <span class="file-name">'{{fileName}}'</span></p>
+    </div>
+
+</div>

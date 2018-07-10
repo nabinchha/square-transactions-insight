@@ -1,0 +1,8 @@
+<div class="container-fluid dashboard-container">
+    <app-csvdropzone (fileSelected)="handleFileSelected($event)"></app-csvdropzone>
+    <ngb-progressbar *ngIf="loaderProgress > 0" type="warning" [value]="loaderProgress" [striped]="true" [animated]="true" [showValue]="true"></ngb-progressbar>
+    <app-report-customer-retention></app-report-customer-retention>
+    <app-report-revenue-by-month></app-report-revenue-by-month>
+    <app-report-top-customers></app-report-top-customers>
+    <app-report-top-purchased-items></app-report-top-purchased-items>
+</div>

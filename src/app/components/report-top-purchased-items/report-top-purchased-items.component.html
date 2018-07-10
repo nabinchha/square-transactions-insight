@@ -1,0 +1,36 @@
+<div *ngIf="topPurchasedItems.length > 0" class="card">
+  <div class="card-header">
+    <strong>
+      <span>Top</span>
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{poolSize}}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button class="dropdown-item" (click)="setPoolSize(10)">10</button>
+          <button class="dropdown-item" (click)="setPoolSize(25)">25</button>
+          <button class="dropdown-item" (click)="setPoolSize(50)">50</button>
+          <button class="dropdown-item" (click)="setPoolSize(100)">100</button>
+          <button class="dropdown-item" (click)="setPoolSize(200)">200</button>
+          <button class="dropdown-item" (click)="setPoolSize(500)">500</button>
+          <button class="dropdown-item" (click)="setPoolSize(1000)">1000</button>
+        </div>
+      </div>
+      <span> purchased items</span>
+    </strong>
+  </div>
+  <div class="card-body">
+    <table class="table table-sm">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Count</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of topPurchasedItems">
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

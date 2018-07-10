@@ -1,0 +1,13 @@
+<div *ngIf="analysisService.initialized" class="card">
+  <div class="card-header">
+    <span><strong>Monthly retention/churn rates over {{barChartLabels.length}} months.</strong></span>
+  </div>
+  <div class="card-body">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="true"
+            chartType="bar"></canvas>
+  </div>
+</div>
