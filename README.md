@@ -1,6 +1,10 @@
 # SquareTransactionsInsight
 A utility tool that ingests square's transactions csv export to provide a more meaningful reporting dashboard for retention, top customer, top selling product, and other client side lite analysis.
 
+![alt tag](ss1.png)
+![alt tag](ss2.png)
+![alt tag](ss3.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
 ## Development server
